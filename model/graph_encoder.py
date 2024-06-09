@@ -13,7 +13,8 @@ class GraphContinuousPromptModel(torch.nn.Module):
         device = next(self.model.parameters()).device
         x = x.to(device)
         edge_index = edge_index.to(device)
-        return torch.mean(self.model(x, edge_index), dim=0).unsqueeze(dim=0)
+        # return torch.mean(self.model(x, edge_index), dim=0).unsqueeze(dim=0)
+        return self.model(x, edge_index)
     
 
 class GCN(torch.nn.Module):
